@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="{% static 'images/rust_logo.webp' %}">
+
+    <link rel="stylesheet" href="{% static 'styles/index_style.css' %}">
+
+    <link rel="stylesheet" href="{% static 'styles/dropdown_style.css' %}">
+
+
+    <title>RUST RAID CALCULATOR </title>
+</head>
+<body>
+
+
+    <div class="content">
+        <div class="name_block">
+            <img src="{% static 'images/rust_logo.webp' %}" alt="q">
+            <h1>Rust raid calculator</h1>
+        </div>
+
+
+
+        <div class="calc_block">
+
+            <div class="input_block">
+
+                <form action="{% url 'index' %}" method="post">
+                {% csrf_token %}
+                    <div class="drop_block">
+
+                        <div class="r_object">
+                            <h2>add object to raid:</h2>
+                            {{ form.objct }}
+                        </div>
+
+                        <div class="r_tool">
+                            <h2>add tool to raid:</h2>
+                            {{ form.tool }}
+                        </div>
+
+                    </div>
+
+
+                    <div class="flx_bt">
+                        <div class="r_vol">
+                            <h2>add quantity to raid:</h2>
+                            {{ form.quantity }}
+                        </div>
+
+                        <button class="input_btn" type="submit">Enter</button>
+                    </div>
+                </form>
+
+            </div>
+
+            {% include 'calc_page/output_block.html' %}
+        </div>
+
+        <div class="nav_bott" style="background-color: rgb(36, 24, 24);">
+            <div class="con_p">
+                <p class="contact">Contact Us:</p>
+                <p class="mail">RR.CALCULATOR@gmail.com</p>
+            </div>
+        </div>
+    </div>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.js"></script>
+<script type="text/javascript" src="{% static 'scripts/drop_script.js' %}"></script>
+
+
+</body>
+
+
+</html>
+

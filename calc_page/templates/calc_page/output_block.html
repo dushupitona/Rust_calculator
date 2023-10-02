@@ -1,0 +1,44 @@
+{% if out_data %}
+
+<div class="output_block">
+
+
+
+    <div class="top_out_block">
+        <div class="top_out_content">
+            <h2 style="color: black;">You need:</h2>
+            <div class="quan_out_block">
+                <img src="{{ bar_img }}" alt="">
+                <div class="quan_out_block_h">
+                    <h2 style="color: black;">x</h2>
+                    <h2 style="color: black;">{{ quantity }}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main_out_block">
+        <div class="main_out_content">
+            <div class="main_h">
+                <h2 style="color: black;">In resources:</h2>
+            </div>
+
+            <div class="main_res" >
+
+                <ul>
+
+                    {% for data_dict in out_data %}
+
+                        <li><div class="main_li"><img src="{{ data_dict.img_src }}" alt=""><h2 style="color: rgb(0, 0, 0);">x</h2><h2>{{ data_dict.values }}</h2></div></li>
+
+                    {% endfor %}
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+{% endif %}

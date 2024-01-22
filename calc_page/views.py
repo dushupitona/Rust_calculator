@@ -16,9 +16,11 @@ def index(request):
 
             output_dict = tuple({
                         'name': key,
-                        'values': '{:,}'.format(value * craft_quan * quan).replace(',', '.'),
+                        'values': '{:,}'.format(value * craft_quan).replace(',', '.'),
                         'img_src': 'media/' + str(Resource.objects.get(res_val=key).res_img)
                                 } for key, value in sort(tool.tool_res))  # словарь с данными для вывода
+            
+
 
             context = {
                 'form': form,

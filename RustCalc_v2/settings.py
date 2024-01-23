@@ -58,6 +58,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'calc_page',
     'django_extensions',
+    'rest_framework',
+    'api',
 ]
 
 MIDDLEWARE = [

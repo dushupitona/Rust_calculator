@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+
+  db:
+    image: postgres:15-alpine
+    env_file:
+      - .env
+  
+  web:
+    depends_on:
+      - db
+    build:
+      context: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./RustCalc_v2:/app
+    env_file:
+      - .env
+    command: >
+      sh -c " python manage.py makemigrations &&
+              python manage.py migrate &&
+              python manage.py loaddata /app/calc_page/fixtures/user.json /app/calc_page/fixtures/raid_object.json /app/calc_page/fixtures/raid_tool.json /app/calc_page/fixtures/resource.json&&
+              python manage.py runserver 0.0.0.0:8000"
+
+
+
+  

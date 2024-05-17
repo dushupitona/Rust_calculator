@@ -31,13 +31,13 @@ class CalculateApiView(APIView):
 
                 craft_quan = obj.obj_raid.get(tool.tool_val) * quan
 
-                output_dict = tuple(
+                resources = tuple(
                     {
                         'name': key,
                         'values': '{:,}'.format(value * craft_quan).replace(',', '.'),
                     } for key, value in sort(tool.tool_res))
 
-                return Response({'tool': tool.tool_name, 'quantity': craft_quan, 'resources': output_dict})
+                return Response({'tool': tool.tool_name, 'quantity': craft_quan, 'resources': resources}, status=200)
             except:
                 return Response('Invalid data', status=400)
         else:
